@@ -86,5 +86,5 @@ public class CustomSandwich extends Sandwich {
         this.toasted = scanner.nextLine().equalsIgnoreCase("yes");
     }
 }
-}
+
 

@@ -3,7 +3,7 @@ package com.plurasight.Deli;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); // Only one scanner for the whole application
         boolean running = true;
 
         while (running) {
@@ -15,9 +15,9 @@ public class Main {
 
             switch (choice) {
                 case "1" -> {
-                    // Create an Order object and pass the scanner to it
+                    // Create an Order object, passing the *same* scanner to it
                     Order order = new Order(scanner);
-                    // Start the order process, which manages the order screen loop
+                    // Call the method that manages the entire order process
                     order.startOrderProcess();
                 }
                 case "0" -> running = false;
@@ -25,6 +25,6 @@ public class Main {
             }
         }
         System.out.println("Goodbye! Come back soon!");
-        scanner.close(); // Close the scanner when done
+        scanner.close(); // Close the scanner when the application exits
     }
 }

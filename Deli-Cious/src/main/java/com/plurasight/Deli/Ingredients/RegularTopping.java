@@ -1,5 +1,7 @@
 package com.plurasight.Deli.Ingredients;
 
-public class RegularTopping {
-    //TODO: Add Similar Logic
+public class RegularTopping extends Ingredients {
+    public RegularTopping(String type) {
+        super(0.00, type);
+    }
 }

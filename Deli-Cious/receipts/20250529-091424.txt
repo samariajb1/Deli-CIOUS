@@ -1,0 +1,18 @@
+--- DELI-cious Receipt ---
+Order Date/Time: 2025-05-29 09:14:24
+--------------------------
+
+--- Your Current Order ---
+1. Size: 4" Custom SandwichIngredients:
+  - white ($0.00)
+  - steak ($0.00)
+  - steak (Extra) ($0.00)
+  - swiss ($0.00)
+  - mayo Sauce ($0.00)
+Sandwich Total Ingredient Price: $0.00 (Toasted)
+2. 2 - $0.00
+3. Small Coco Drink - $2.00
+--------------------------
+Order Total: $2.00
+--------------------------
+Thank you for your order!
