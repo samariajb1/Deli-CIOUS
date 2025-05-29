@@ -25,6 +25,6 @@ public class Main {
             }
         }
         System.out.println("Goodbye! Come back soon!");
-        scanner.close(); // Close the scanner when the application exits
+        scanner.close();
     }
 }

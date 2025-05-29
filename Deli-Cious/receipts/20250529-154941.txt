@@ -1,0 +1,15 @@
+--- Sammmies Cafe Receipt ---
+2025-05-29 15:49:41
+--------------------------
+
+--- Your Current Order <3 ---
+1. Size: 4" Custom Sandwich
+  Toasted: Yes
+Ingredients:
+    - rye ($5.50)
+Sandwich Total Price: $5.50
+2. Combo Meal ($3.50): Medium lemon Drink and Lays
+--------------------------
+Order Total: $9.00
+--------------------------
+Thank you for your order!

@@ -23,10 +23,10 @@ public class Order {
         boolean ordering = true;
 
         while (ordering) {
-            System.out.println("\n--- Welcome to Sammies Cafe! <3 ---"); // Added <3
+            System.out.println("\n--- Welcome to Sammies Cafe! <3 ---"); // Add <3
             System.out.println("1) New Order");
             System.out.println("0) Exit");
-            System.out.print("\nEnter your choice: "); // Added \n
+            System.out.print("\nEnter your choice: "); // Add \n
             String choice = scanner.nextLine();
 
             switch (choice) {
@@ -35,10 +35,10 @@ public class Order {
                     order.startOrderProcessInner(); // Call inner method
                     // After inner process, decide if main loop continues
                     if (order.items.isEmpty() && !order.isCheckoutConfirmed()) {
-                        // Order was effectively cancelled or nothing was added
+                        // Order was cancelled or nothing was added
                         // Loop continues to main menu
                     } else {
-                        ordering = false; // Order completed (checked out or cancelled explicitly from inner loop)
+                        ordering = false; // Order completed or cancelled
                     }
                 }
                 case "0" -> ordering = false;
@@ -47,19 +47,19 @@ public class Order {
         }
     }
 
-    // New method to encapsulate the order process loop
+
     private boolean checkoutConfirmed = false; // Flag to track if checkout was confirmed
 
     private void startOrderProcessInner() {
         boolean ordering = true;
         while (ordering) {
-            System.out.println("\n--- Order Screen <3 ---"); // Added <3
+            System.out.println("\n--- Order Screen <3 ---");
             System.out.println("1) Add Sandwich");
             System.out.println("2) Add Drink");
             System.out.println("3) Add Chips");
             System.out.println("4) Checkout");
             System.out.println("0) Cancel Order");
-            System.out.print("\nEnter your choice: "); // Added \n
+            System.out.print("\nEnter your choice: ");
             String choice = scanner.nextLine();
 
             switch (choice) {
@@ -68,7 +68,7 @@ public class Order {
                 case "3" -> addChips();
                 case "4" -> {
                     checkout();
-                    ordering = false; // Exit order process after checkout (or if user cancels from checkout)
+                    ordering = false;
                 }
                 case "0" -> {
                     cancelOrder();
@@ -85,15 +85,15 @@ public class Order {
 
 
     private void addSandwich() {
-        System.out.println("\n--- Building Your Custom Sandwich <3 ---"); // Added <3
+        System.out.println("\n--- Building Your Custom Sandwich <3 ---");
         CustomSandwich sandwich = new CustomSandwich();
         sandwich.buildSandwich(scanner);
 
-        System.out.print("\nWould you like the sandwich toasted? (yes/no): "); // Added \n
+        System.out.print("\nWould you like the sandwich toasted? (yes/no): ");
         sandwich.setToasted(scanner.nextLine().equalsIgnoreCase("yes"));
 
         items.add(sandwich);
-        System.out.println("\nSandwich added to your order!"); // Added \n and improved message
+        System.out.println("\nSandwich added to your order!");
 
         try {
             System.out.println("Proceeding to next step...");
@@ -103,16 +103,16 @@ public class Order {
             System.out.println("Pause interrupted.");
         }
 
-        System.out.print("\nWould you like to make this a combo for $3.50? (yes/no): "); // Added \n
+        System.out.print("\nWould you like to make this a combo for $3.50? (yes/no): ");
         if (scanner.nextLine().equalsIgnoreCase("yes")) {
-            System.out.println("\n--- Combo Options <3 ---"); // Added <3
-            System.out.print("\nChoose your drink flavor: "); // Added \n
+            System.out.println("\n--- Combo Options <3 ---");
+            System.out.print("\nChoose your drink flavor: ");
             String drinkFlavor = scanner.nextLine();
-            System.out.print("\nChoose your drink size (Small, Medium, Large): "); // Added \n
+            System.out.print("\nChoose your drink size (Small, Medium, Large): ");
             String drinkSize = scanner.nextLine();
             Drink comboDrink = new Drink(drinkSize, drinkFlavor);
 
-            System.out.print("\nChoose your chips type: "); // Added \n
+            System.out.print("\nChoose your chips type: ");
             String chipsType = scanner.nextLine();
             Sides comboChips = new Sides(chipsType);
 
@@ -125,55 +125,55 @@ public class Order {
                             comboChips.getName());
                 }
             });
-            System.out.println("\nCombo Meal added for $3.50!"); // Added \n
+            System.out.println("\nCombo Meal added for $3.50!");
         }
 
-        System.out.print("\nWould you like to checkout now? (yes/no): "); // Added \n
+        System.out.print("\nWould you like to checkout now? (yes/no): ");
         if (scanner.nextLine().equalsIgnoreCase("yes")) {
             checkout();
         } else {
-            System.out.println("\nReturning to order screen."); // Added \n
+            System.out.println("\nReturning to order screen.");
         }
     }
 
     private void addDrink() {
-        System.out.println("\n--- Adding a Drink <3 ---"); // Added <3
-        System.out.print("\nEnter drink flavor: "); // Added \n
+        System.out.println("\n--- Adding a Drink <3 ---");
+        System.out.print("\nEnter drink flavor: ");
         String flavor = scanner.nextLine();
-        System.out.print("\nEnter drink size (Small, Medium, Large): "); // Added \n
+        System.out.print("\nEnter drink size (Small, Medium, Large): ");
         String size = scanner.nextLine();
         Drink drink = new Drink(size, flavor);
         items.add(drink);
-        System.out.println("\n" + drink.getName() + " added to your order!"); // Added \n and improved message
+        System.out.println("\n" + drink.getName() + " added to your order!");
     }
 
     private void addChips() {
-        System.out.println("\n--- Adding Chips <3 ---"); // Added <3
-        System.out.print("\nEnter chip type: "); // Added \n
+        System.out.println("\n--- Adding Chips <3 ---");
+        System.out.print("\nEnter chip type: ");
         String type = scanner.nextLine();
         Sides chips = new Sides(type);
         items.add(chips);
-        System.out.println("\n" + chips.getName() + " added to your order!"); // Added \n and improved message
+        System.out.println("\n" + chips.getName() + " added to your order!");
     }
 
     private void checkout() {
-        System.out.println("\n--- Proceeding to Checkout <3 ---"); // Added <3
+        System.out.println("\n--- Proceeding to Checkout <3 ---");
         displayOrderDetails();
-        System.out.print("\nConfirm order? (yes/no): "); // Added \n
+        System.out.print("\nConfirm order? (yes/no): ");
         String confirm = scanner.nextLine();
         if (confirm.equalsIgnoreCase("yes")) {
             Receipt.save(this);
-            System.out.println("\nOrder finalized!"); // Added \n
-            System.out.println("Thanks for ordering! Goodbye. <3"); // Added <3
+            System.out.println("\nOrder finalized!");
+            System.out.println("Thanks for ordering! Goodbye. <3");
             items.clear();
-            this.checkoutConfirmed = true; // Set flag
+            this.checkoutConfirmed = true;
         } else {
-            System.out.println("\nCheckout cancelled. Returning to order screen."); // Added \n
+            System.out.println("\nCheckout cancelled. Returning to order screen.");
         }
     }
 
     private void cancelOrder() {
-        System.out.println("\nOrder cancelled. Returning to main menu."); // Added \n
+        System.out.println("\nOrder cancelled. Returning to main menu.");
         items.clear();
         this.checkoutConfirmed = false; // Ensure flag is false on cancel
     }
