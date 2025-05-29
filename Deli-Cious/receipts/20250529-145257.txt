@@ -1,0 +1,15 @@
+--- DELI-cious Receipt ---
+Order Date/Time: 2025-05-29 14:52:57
+--------------------------
+
+--- Your Current Order ---
+1. Size: 8" Custom Sandwich
+  Toasted: Yes
+Ingredients:
+    - white ($7.00)    - ham ($2.00)    - swiss ($1.50)    - onions ($0.00)    - mayo Sauce ($0.00)    - au jus ($0.00)
+Sandwich Total Price: $10.50
+2. Combo Meal ($3.50): Large Coco Drink and Lays
+--------------------------
+Order Total: $14.00
+--------------------------
+Thank you for your order!

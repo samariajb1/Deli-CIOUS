@@ -1,7 +1,7 @@
 package com.plurasight.Deli.Items;
 public class Sides extends Item {
     public Sides(String type) {
-        super(type, type.equalsIgnoreCase("chips") ? 1.50 : 0.0);
+        super(type,1.50);
     }
 
     @Override

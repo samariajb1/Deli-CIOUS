@@ -20,8 +20,8 @@ public class Receipt { // Corrected spelling
 
         try (FileWriter writer = new FileWriter(filename)) {
             // Write a header
-            writer.write("--- DELI-cious Receipt ---\n");
-            writer.write("Order Date/Time: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n");
+            writer.write("--- Sammmies Cafe Receipt ---\n");
+            writer.write("   Order Date/Time: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n");
             writer.write("--------------------------\n");
 
             // Get the order details from the Order object and write them

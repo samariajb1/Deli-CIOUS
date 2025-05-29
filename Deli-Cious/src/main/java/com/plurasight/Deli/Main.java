@@ -7,7 +7,7 @@ public class Main {
         boolean running = true;
 
         while (running) {
-            System.out.println("\n--- Welcome to DELI-cious! ---");
+            System.out.println("\n--- Welcome to SAMMIES CAFE! <3 ---");
             System.out.println("1) New Order");
             System.out.println("0) Exit");
             System.out.print("Enter your choice: ");

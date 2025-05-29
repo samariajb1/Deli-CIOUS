@@ -1,0 +1,18 @@
+--- DELI-cious Receipt ---
+Order Date/Time: 2025-05-29 12:47:03
+--------------------------
+
+--- Your Current Order ---
+1. Size: 4" Custom Sandwich
+  Toasted: No
+Ingredients:
+    - white ($5.50)    - rye ($5.50)    - ham ($1.00)    - ham (Extra) ($1.00)    - american ($0.75)    - american (Extra) ($0.75)
+Sandwich Total Price: $14.50
+2. Large coco Drink - $3.00
+3. Lays - $0.00
+4. Combo Surcharge (Includes Large coco Drink and Lays)
+5. Combo Add-on: Large coco Drink and Lays
+--------------------------
+Order Total: $21.50
+--------------------------
+Thank you for your order!

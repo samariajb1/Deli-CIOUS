@@ -7,84 +7,75 @@ import com.plurasight.Deli.Ingredients.RegularTopping;
 import java.util.Scanner;
 
 public class CustomSandwich extends Sandwich {
-
     public CustomSandwich() {
         super("", "Custom Sandwich");
     }
 
+    public void setToasted(boolean toasted){
+        this.toasted = toasted;
+    }
+
     @Override
     public String getDetails() {
-        String baseDetails = super.getDetails();
-        return baseDetails + (this.toasted ? " (Toasted)" : " (Not Toasted)");
+        return super.getDetails();
     }
+
     public void buildSandwich(Scanner scanner) {
-        // 1. Select Size (will determine bread price later)
-        System.out.print("Choose sandwich size (4, 8, 12): ");
+        System.out.print("\n--- Choose Your Sandwich Base <3 ---\n"); // Added <3
+        System.out.print("\nEnter sandwich size (4, 8, 12): "); // Added \n
         String chosenSize = scanner.nextLine();
-        this.size = chosenSize + "\""; // Store the chosen size in the inherited 'size' field
+        this.size = chosenSize + "\"";
 
-        // 2. Select Bread
-        System.out.print("Choose bread (white, wheat, rye, wrap): ");
+        System.out.print("\nEnter bread type (white, wheat, rye, wrap): "); // Added \n
         String breadType = scanner.nextLine();
-        // Instantiate and add Bread based on chosen size
-        addIngredient(new Bread(chosenSize, breadType)); // Use chosenSize here
+        addIngredient(new Bread(this.size, breadType)); // Corrected to use this.size
 
-        // 3. Add Meats (Loop for multiple)
+        System.out.print("\n--- Add Meats (type 'none' to skip) ---\n");
         while (true) {
-            System.out.print("Add meat? (steak, ham, salami, roast beef, chicken, bacon, none to skip): ");
+            System.out.print("\nAdd meat (steak, ham, salami, roast beef, chicken, bacon): "); // Added \n
             String meatType = scanner.nextLine();
             if (meatType.equalsIgnoreCase("none")) break;
-            addIngredient(new Meat(chosenSize, meatType)); // Add meat
-            System.out.print("Add extra " + meatType + "? (yes/no): ");
+            addIngredient(new Meat(this.size, meatType));
+            System.out.print("\nAdd extra " + meatType + "? (yes/no): "); // Added \n
             if (scanner.nextLine().equalsIgnoreCase("yes")) {
-                addIngredient(new Meat(chosenSize, meatType + " (Extra)")); // Add another for extra charge
+                addIngredient(new Meat(this.size, meatType + " (Extra)"));
             }
         }
 
-        // 4. Add Cheeses (Loop for multiple)
+        System.out.print("\n--- Add Cheeses (type 'none' to skip) ---\n");
         while (true) {
-            System.out.print("Add cheese? (american, provolone, cheddar, swiss, none to skip): ");
+            System.out.print("\nAdd cheese (american, provolone, cheddar, swiss): "); // Added \n
             String cheeseType = scanner.nextLine();
             if (cheeseType.equalsIgnoreCase("none")) break;
-            addIngredient(new Cheese(chosenSize, cheeseType)); // Add cheese
-            System.out.print("Add extra " + cheeseType + "? (yes/no): ");
+            addIngredient(new Cheese(this.size, cheeseType));
+            System.out.print("\nAdd extra " + cheeseType + "? (yes/no): "); // Added \n
             if (scanner.nextLine().equalsIgnoreCase("yes")) {
-                addIngredient(new Cheese(chosenSize, cheeseType + " (Extra)")); // Add another for extra charge
+                addIngredient(new Cheese(this.size, cheeseType + " (Extra)"));
             }
         }
 
-        // 5. Add Regular Toppings (Loop for multiple)
+        System.out.print("\n--- Add Regular Toppings (type 'none' to skip) ---\n");
         while (true) {
-            System.out.print("Add regular topping? (lettuce, peppers, onions, tomatoes, jalapeños, cucumbers, pickles, guacamole, mushrooms, none to skip): ");
+            System.out.print("\nAdd topping (lettuce, peppers, onions, tomatoes, jalapeños, cucumbers, pickles, guacamole, mushrooms): "); // Added \n
             String toppingType = scanner.nextLine();
             if (toppingType.equalsIgnoreCase("none")) break;
-            addIngredient(new RegularTopping(toppingType)); // Regular topping (price 0)
+            addIngredient(new RegularTopping(toppingType));
         }
 
-        // 6. Add Sauces (Loop for multiple)
+        System.out.print("\n--- Add Sauces (type 'none' to skip) ---\n");
         while (true) {
-            System.out.print("Add sauce? (mayo, mustard, ketchup, ranch, thousand islands, vinaigrette, none to skip): ");
+            System.out.print("\nAdd sauce (mayo, mustard, ketchup, ranch, thousand islands, vinaigrette): "); // Added \n
             String sauceType = scanner.nextLine();
             if (sauceType.equalsIgnoreCase("none")) break;
-            addIngredient(new RegularTopping(sauceType + " Sauce")); // Using RegularTopping for sauces too (price 0)
+            addIngredient(new RegularTopping(sauceType + " Sauce"));
         }
 
-        // 7. Add Sides (Au Jus, Sauce - these are different from sandwich sauces)
-        // Project lists 'au jus' and 'sauce' under 'Sides' for sandwiches.
-        // If these are *additional* sides that aren't part of the sandwich but apply to it,
-        // you might add them here as well or in the Order class itself as separate items.
-        // For now, let's assume they are regular toppings/sauces for the sandwich.
+        System.out.print("\n--- Add Sides for Sandwich (type 'none' to skip) ---\n");
         while (true) {
-            System.out.print("Add Au Jus or Sauce? (au jus, sauce, none to skip): ");
+            System.out.print("\nAdd Au Jus or Sauce (au jus, sauce): "); // Added \n
             String sideType = scanner.nextLine();
             if (sideType.equalsIgnoreCase("none")) break;
-            addIngredient(new RegularTopping(sideType)); // Price 0
+            addIngredient(new RegularTopping(sideType));
         }
-
-        // 8. Toasted
-        System.out.print("Would you like the sandwich toasted? (yes/no): ");
-        this.toasted = scanner.nextLine().equalsIgnoreCase("yes");
     }
 }
-
-

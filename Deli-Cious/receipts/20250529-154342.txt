@@ -1,0 +1,15 @@
+--- Sammmies Cafe Receipt ---
+   Order Date/Time: 2025-05-29 15:43:42
+--------------------------
+
+--- Your Current Order <3 ---
+1. Size: 8" Custom Sandwich
+  Toasted: Yes
+Ingredients:
+    - wrap ($7.00)    - beef ($2.00)    - bacon ($2.00)    -  ($2.00)    - american ($1.50)    - lettuce ($0.00)    - mayo Sauce ($0.00)    - au jus ($0.00)    - sause ($0.00)
+Sandwich Total Price: $14.50
+2. Combo Meal ($3.50): Medium coco Drink and Lays
+--------------------------
+Order Total: $18.00
+--------------------------
+Thank you for your order!
