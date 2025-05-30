@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Order {
     private List<Item> items;
     private Scanner scanner;
+    private boolean checkoutConfirmed = false; // to track if checkout was confirmed
 
     public Order(Scanner scanner) {
         this.items = new ArrayList<>();
@@ -19,40 +20,11 @@ public class Order {
     }
 
     // This method is called from Main.java
-    public void startOrderProcess() {
-        boolean ordering = true;
 
-        while (ordering) {
-            System.out.println("\n--- Welcome to Sammies Cafe! <3 ---"); // Add <3
-            System.out.println("1) New Order");
-            System.out.println("0) Exit");
-            System.out.print("\nEnter your choice: "); // Add \n
-            String choice = scanner.nextLine();
+    public void processOrder() {
+        boolean addingItems = true;
 
-            switch (choice) {
-                case "1" -> {
-                    Order order = new Order(scanner);
-                    order.startOrderProcessInner(); // Call inner method
-                    // After inner process, decide if main loop continues
-                    if (order.items.isEmpty() && !order.isCheckoutConfirmed()) {
-                        // Order was cancelled or nothing was added
-                        // Loop continues to main menu
-                    } else {
-                        ordering = false; // Order completed or cancelled
-                    }
-                }
-                case "0" -> ordering = false;
-                default -> System.out.println("Invalid choice. Please try again.");
-            }
-        }
-    }
-
-
-    private boolean checkoutConfirmed = false; // Flag to track if checkout was confirmed
-
-    private void startOrderProcessInner() {
-        boolean ordering = true;
-        while (ordering) {
+        while (addingItems) {
             System.out.println("\n--- Order Screen <3 ---");
             System.out.println("1) Add Sandwich");
             System.out.println("2) Add Drink");
@@ -68,13 +40,13 @@ public class Order {
                 case "3" -> addChips();
                 case "4" -> {
                     checkout();
-                    ordering = false;
+                    addingItems = false; // Exit this loop after checkout (or if user cancels from checkout)
                 }
                 case "0" -> {
                     cancelOrder();
-                    ordering = false; // Exit order process after cancel
+                    addingItems = false; // Exit this loop after cancel
                 }
-                default -> System.out.println("Invalid choice. Please try again. :(");
+                default -> System.out.println("Invalid choice. Please try again.");
             }
         }
     }
@@ -82,6 +54,7 @@ public class Order {
     public boolean isCheckoutConfirmed() {
         return checkoutConfirmed;
     }
+
 
 
     private void addSandwich() {
@@ -169,24 +142,25 @@ public class Order {
             this.checkoutConfirmed = true;
         } else {
             System.out.println("\nCheckout cancelled. Returning to order screen.");
+            this.checkoutConfirmed = false;
         }
     }
 
     private void cancelOrder() {
         System.out.println("\nOrder cancelled. Returning to main menu.");
         items.clear();
-        this.checkoutConfirmed = false; // Ensure flag is false on cancel
+        this.checkoutConfirmed = false; // Ensure flag is false
     }
 
     public String getOrderDetailsAsString() {
         StringBuilder details = new StringBuilder();
-        details.append("\n--- Your Current Order <3 ---\n"); // Added <3
+        details.append("\n--- Your Current Order <3 ---\n");
         if (items.isEmpty()) {
             details.append("No items in your order yet.\n");
             return details.toString();
         }
         double total = 0;
-        for (int i = 0; i < items.size(); i++) {
+        for (int i = 0; i < items.size(); i++) { //Explain
             Item item = items.get(i);
             details.append(String.format("%d. %s%n", (i + 1), item.getDetails()));
             total += item.getPrice();
@@ -201,5 +175,6 @@ public class Order {
         System.out.println(getOrderDetailsAsString());
     }
 }
+
 
 
